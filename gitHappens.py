@@ -194,6 +194,10 @@ def get_milestone(manual):
     milestone = list_milestones(True) # select active for today
     return milestone
 
+def get_milestone_id(manual):
+    milestone = get_milestone(manual)
+    return milestone['id'] if milestone else False
+
 def get_iteration(manual):
     if manual:
         iterations = list_iterations()
@@ -822,7 +826,7 @@ def main():
 
     milestone = False
     if not args.no_milestone:
-        milestone = get_milestone(args.milestone)['id']
+        milestone = get_milestone_id(args.milestone)
 
     iteration = False
     if not args.no_iteration:
