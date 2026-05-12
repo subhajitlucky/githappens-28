@@ -341,7 +341,8 @@ def startIssueCreation(project_id, title, milestone, epic, iteration, selectedSe
         subprocess.check_call(["git", "fetch", "origin"])
 
     print("Run:")
-    print("         git fetch origin")
+    if not AUTO_FETCH_AFTER_MERGE_REQUEST:
+        print("         git fetch origin")
     print(f"         git checkout -b '{createdMergeRequest['source_branch']}' 'origin/{createdMergeRequest['source_branch']}'")
     print("to switch to new branch.")
 
